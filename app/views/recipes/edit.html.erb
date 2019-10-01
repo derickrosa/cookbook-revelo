@@ -1,0 +1,5 @@
+<h1>Editando receita!</h1>
+<% if @recipe.errors.any? %>
+  <p>Não foi possível salvar a receita</p>
+<% end %>
+<%= render partial: 'form', locals: { recipe: @recipe } %>

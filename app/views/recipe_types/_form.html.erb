@@ -1,0 +1,5 @@
+<%=form_with model: recipe_type, local: true do |f| %>
+  <%=f.label :name, "Nome" %>
+  <%=f.text_field :name %>
+  <%=f.submit "Enviar"%>
+<% end %>

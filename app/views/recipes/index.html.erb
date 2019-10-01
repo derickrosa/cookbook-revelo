@@ -1,0 +1,18 @@
+<h1>CookBook</h1>
+
+<p>Bem-vindo ao maior livro de receitas online</p>
+
+<!--<p><%#@recipes.each do |recipe| %>
+    <%#=render partial: 'recipe', locals: {recipe: recipe} %>
+  <%# end %></p>-->
+
+<%= render @recipes %>
+
+
+
+<%=link_to "Enviar uma receita", new_recipe_path if user_signed_in?%>
+<%=link_to "Enviar tipo da receita", new_recipe_type_path %>
+<%=link_to "Ver tipos de receitas", recipe_types_path %>
+<% unless user_signed_in?%>
+  <%= link_to "Entrar", new_user_session_path %>
+<% end %>

@@ -1,0 +1,7 @@
+<h1>Tipos de Receita</h1>
+
+<ul>
+  <% @recipe_types.each do |recipe_type| %>
+    <li><%= link_to recipe_type.name, recipe_type %></li>
+  <% end %>
+</ul>

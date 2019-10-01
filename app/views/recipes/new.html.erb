@@ -1,0 +1,18 @@
+<h1>Criar nova receita!</h1>
+
+<%= render partial: 'form', locals: { recipe: @recipe } %>
+
+<% if @recipe.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@recipe.errors.count, "error") %>
+      Não foi possível salvar a receita
+    </h2>
+
+    <ul>
+      <% @recipe.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

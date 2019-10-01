@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <nav>
+      <% if user_signed_in? %>
+          <ul>
+            <li>Signed in successfully.</li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: 'delete' %></li>
+          </ul>
+      <% end %>
+    </nav>
+
+    <%= render partial: 'recipes/search' %>
     <%= yield %>
   </body>
 </html>
