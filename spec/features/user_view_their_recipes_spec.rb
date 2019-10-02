@@ -1,5 +1,4 @@
 require 'rails_helper'
-include Warden::Test::Helpers
 
 feature 'User only view their own recipes' do
   scenario 'successfully' do

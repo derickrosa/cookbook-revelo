@@ -11,6 +11,7 @@
 <%=link_to "Ver tipos de receitas", recipe_types_path %>
 <% if user_signed_in? %>
   <%= link_to "Minhas Receitas", '/my_recipes' %>
+  <%= link_to 'Criar lista', new_recipe_list_path %>
 <% end %>
 <% unless user_signed_in?%>
   <%= link_to "Entrar", new_user_session_path %>

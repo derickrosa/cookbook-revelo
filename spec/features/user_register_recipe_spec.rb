@@ -1,5 +1,4 @@
 require 'rails_helper'
-include Warden::Test::Helpers
 
 feature 'User register recipe' do
   scenario 'successfully' do
