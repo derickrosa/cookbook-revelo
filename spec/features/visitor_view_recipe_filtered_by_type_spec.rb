@@ -4,21 +4,22 @@ feature 'Visitor view recipes filtered by recipe type' do
   scenario 'sucessfully' do
     recipe_type = RecipeType.create(name: "Sobremesa")
     other_recipe_type = RecipeType.create(name: "Entrada")
+    user = User.create!(email: "teste@teste.com", password: "teste123")
 
     Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: 'Brasileira',
                   cook_time: 50,
-                  ingredients: 'Farinha, açucar, cenoura',
+                  ingredients: 'Farinha, açucar, cenoura', user: user,
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     Recipe.create(title: 'Bolo de chocolate', difficulty: 'Fácil',
                   recipe_type: recipe_type, cuisine: 'Árabe',
                   cook_time: 60,
-                  ingredients: 'Farinha, açucar, cenoura',
+                  ingredients: 'Farinha, açucar, cenoura', user: user,
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     Recipe.create(title: 'Pudim', difficulty: 'Fácil',
                   recipe_type: other_recipe_type, cuisine: 'Alemã',
                   cook_time: 60,
-                  ingredients: 'Farinha, açucar, cenoura',
+                  ingredients: 'Farinha, açucar, cenoura', user: user,
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
     visit root_path
@@ -34,21 +35,22 @@ feature 'Visitor view recipes filtered by recipe type' do
   scenario 'and there there no recipes with the specified type' do
     recipe_type = RecipeType.create(name: "Sobremesa")
     other_recipe_type = RecipeType.create(name: "Entrada")
+    user = User.create!(email: "teste@teste.com", password: "teste123")
 
     Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: 'Brasileira',
                   cook_time: 50,
-                  ingredients: 'Farinha, açucar, cenoura',
+                  ingredients: 'Farinha, açucar, cenoura', user: user,
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     Recipe.create(title: 'Bolo de chocolate', difficulty: 'Fácil',
                   recipe_type: recipe_type, cuisine: 'Árabe',
                   cook_time: 60,
-                  ingredients: 'Farinha, açucar, cenoura',
+                  ingredients: 'Farinha, açucar, cenoura', user: user,
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     Recipe.create(title: 'Pudim', difficulty: 'Fácil',
                   recipe_type: recipe_type, cuisine: 'Alemã',
                   cook_time: 60,
-                  ingredients: 'Farinha, açucar, cenoura',
+                  ingredients: 'Farinha, açucar, cenoura', user: user,
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
     visit root_path

@@ -3,15 +3,16 @@ require 'rails_helper'
 feature 'Visitor searchs for a recipe' do
   scenario 'successfully' do
     recipe_type = RecipeType.create(name: "Sobremesa")
+    user = User.create!(email: "teste@teste.com", password: "teste123")
     Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
                            recipe_type: recipe_type, cuisine: 'Brasileira',
                            cook_time: 50,
-                           ingredients: 'Farinha, açucar, cenoura',
+                           ingredients: 'Farinha, açucar, cenoura', user: user,
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     Recipe.create(title: 'Bolo de chocolate', difficulty: 'Fácil',
                            recipe_type: recipe_type, cuisine: 'Árabe',
                            cook_time: 60,
-                           ingredients: 'Farinha, açucar, cenoura',
+                           ingredients: 'Farinha, açucar, cenoura', user: user,
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
     visit root_path
@@ -26,15 +27,16 @@ feature 'Visitor searchs for a recipe' do
   end
   scenario 'and returns no result' do
     recipe_type = RecipeType.create(name: "Sobremesa")
+    user = User.create!(email: "teste@teste.com", password: "teste123")
     Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: 'Brasileira',
                   cook_time: 50,
-                  ingredients: 'Farinha, açucar, cenoura',
+                  ingredients: 'Farinha, açucar, cenoura', user: user,
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     Recipe.create(title: 'Bolo de chocolate', difficulty: 'Fácil',
                   recipe_type: recipe_type, cuisine: 'Árabe',
                   cook_time: 60,
-                  ingredients: 'Farinha, açucar, cenoura',
+                  ingredients: 'Farinha, açucar, cenoura', user: user,
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
     visit root_path
@@ -50,15 +52,16 @@ feature 'Visitor searchs for a recipe' do
 
   scenario 'with partial title successfully' do
     recipe_type = RecipeType.create(name: "Sobremesa")
+    user = User.create!(email: "teste@teste.com", password: "teste123")
     Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: 'Brasileira',
                   cook_time: 50,
-                  ingredients: 'Farinha, açucar, cenoura',
+                  ingredients: 'Farinha, açucar, cenoura', user: user,
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     Recipe.create(title: 'Bolo de chocolate', difficulty: 'Fácil',
                   recipe_type: recipe_type, cuisine: 'Árabe',
                   cook_time: 60,
-                  ingredients: 'Farinha, açucar, cenoura',
+                  ingredients: 'Farinha, açucar, cenoura', user: user,
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
     visit root_path

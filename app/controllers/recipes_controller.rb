@@ -1,6 +1,8 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create edit update]
   before_action :set_recipe, only: %i[show edit update]
   before_action :set_recipe_type, only: %i[new edit]
+  before_action :own_recipe?, only: [:edit, :update]
 
   def index
     @recipes = Recipe.all
@@ -46,6 +48,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  def my_recipes
+    @recipes = Recipe.where(user: current_user)
+  end
+
   private
 
   def set_recipe
@@ -59,5 +65,9 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, :recipe_type_id, :cuisine, :difficulty, :cook_time, :ingredients, :cook_method)
+  end
+
+  def own_recipe?
+    redirect_to root_path unless @recipe.user == current_user
   end
 end

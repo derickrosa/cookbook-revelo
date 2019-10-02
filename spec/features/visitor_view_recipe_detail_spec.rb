@@ -4,10 +4,11 @@ feature 'Visitor view recipe details' do
   scenario 'successfully' do
     #cria os dados necessários
     recipe_type = RecipeType.create(name: 'Sobremesa')
+    user = User.create!(email: "teste@teste.com", password: "teste123")
     recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
                            cuisine: 'Brasileira', difficulty: 'Médio',
                            cook_time: 60,
-                           ingredients: 'Farinha, açucar, cenoura',
+                           ingredients: 'Farinha, açucar, cenoura', user: user,
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
     # simula a ação do usuário
@@ -29,11 +30,12 @@ feature 'Visitor view recipe details' do
 
   scenario 'and return to recipe list' do
     #cria os dados necessários
+    user = User.create!(email: "teste@teste.com", password: "teste123")
     recipe_type = RecipeType.create(name: 'Sobremesa')
     recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
                            cuisine: 'Brasileira', difficulty: 'Médio',
                            cook_time: 60,
-                           ingredients: 'Farinha, açucar, cenoura',
+                           ingredients: 'Farinha, açucar, cenoura', user: user,
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
     # simula a ação do usuário

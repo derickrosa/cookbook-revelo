@@ -1,4 +1,5 @@
 require 'rails_helper'
+include Warden::Test::Helpers
 
 feature 'User register recipe' do
   scenario 'successfully' do
@@ -40,6 +41,9 @@ feature 'User register recipe' do
   end
 
   scenario 'and must fill in all fields' do
+    user = User.create!(email: "teste@teste.com", password: "teste123")
+    login_as(user, :scope => :user)
+
     # simula a ação do usuário
     visit root_path
     click_on 'Enviar uma receita'
