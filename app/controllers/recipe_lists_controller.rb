@@ -13,6 +13,10 @@ class RecipeListsController < ApplicationController
     end
   end
 
+  def my_recipe_lists
+    @recipe_lists = RecipeList.where(user: current_user)
+  end
+
   def show
     @recipe_list = RecipeList.find(params[:id])
   end
