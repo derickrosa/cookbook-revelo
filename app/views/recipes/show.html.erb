@@ -10,7 +10,16 @@
 <p><%=@recipe.ingredients %></p>
 <h3>Como Preparar</h3>
 <p><%=@recipe.cook_method %></p>
+<% if user_signed_in? %>
+  <%= form_with(url: add_to_list_recipe_path(@recipe), method: 'post') do |f| %>
+    <%= f.label :recipe_list, 'Lista' %>
+    <%= f.collection_select :recipe_list, @recipe_lists, :id, :name %>
+    <%= f.submit 'Adicionar a lista' %>
+  <% end %>
+<% end %>
+
 <%=link_to "Voltar", root_path %>
 <% if @recipe.user == current_user %>
-  <%=link_to "Editar", edit_recipe_path(@recipe) %>
+  <%=link_to "Editar", edit_recipe_path(@recipe) %>  
 <% end %>
+

@@ -1,2 +1,8 @@
 <h1><%= @recipe_list.name %></h1>
+<h1>Receita já adicionada a esta lista!</h1>
+<ul>
+    <% @recipe_list.recipes.each do |recipe| %>
+        <li><%= recipe.title %></li>
+    <% end %>
+</ul>
 <p><%= "criado por #{@recipe_list.user.email}" %></p>

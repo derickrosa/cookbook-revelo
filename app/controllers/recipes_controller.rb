@@ -8,7 +8,11 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
-  def show; end
+  def show
+    if current_user
+      @recipe_lists = current_user.recipe_lists
+    end
+  end
 
   def new
     @recipe = Recipe.new
@@ -50,6 +54,20 @@ class RecipesController < ApplicationController
 
   def my_recipes
     @recipes = Recipe.where(user: current_user)
+  end
+  
+  def add_to_list
+    @recipe_list = RecipeList.find(params[:recipe_list])
+    @recipe = Recipe.find(params[:id])
+
+    if @recipe_list.recipes.find_by(id: @recipe.id)
+      flash[:notice] = 'Receita já adicionada a esta lista!'
+      
+      redirect_to @recipe
+    else
+      @recipe_list_item = RecipeListItem.create!(recipe: @recipe, recipe_list: @recipe_list)
+      redirect_to @recipe_list
+    end
   end
 
   private
