@@ -60,9 +60,10 @@ class RecipesController < ApplicationController
     @recipe_list = RecipeList.find(params[:recipe_list])
     @recipe = Recipe.find(params[:id])
 
+    return redirect_to root_path unless @recipe_list.owned?(current_user)
+    
     if @recipe_list.recipes.find_by(id: @recipe.id)
-      flash[:notice] = 'Receita já adicionada a esta lista!'
-      
+      flash[:notice] = 'Receita já adicionada a esta lista!'      
       redirect_to @recipe
     else
       @recipe_list_item = RecipeListItem.create!(recipe: @recipe, recipe_list: @recipe_list)
