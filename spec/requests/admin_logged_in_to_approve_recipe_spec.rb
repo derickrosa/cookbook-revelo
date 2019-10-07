@@ -33,7 +33,7 @@ describe 'Admin logged in to approve recipe' do
 
     login_as(user, scope: :user)
 
-    get approve_recipe_path(pending_recipe)
+    post approve_recipe_path(pending_recipe)
     expect(response).to redirect_to(root_path)
     expect(pending_recipe).to be_pending
   end
@@ -51,7 +51,7 @@ describe 'Admin logged in to approve recipe' do
 
     login_as(user, scope: :user)
 
-    get reprove_recipe_path(pending_recipe)
+    post reprove_recipe_path(pending_recipe)
     expect(response).to redirect_to(root_path)
     expect(pending_recipe).to be_pending
   end
