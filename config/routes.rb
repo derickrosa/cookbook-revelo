@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'pending', on: :collection
     get 'approve_list', on: :collection
     get 'approve', on: :member
+    get 'reprove', on: :member
   end
   resources :recipe_types, only: %i[new create show index]
   # get '/search', to: 'recipes#search'

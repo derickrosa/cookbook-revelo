@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update]
   before_action :set_recipe_type, only: %i[new edit]
   before_action :own_recipe?, only: [:edit, :update]
+  before_action :admin?, only: [:approve_list, :approve, :reprove]
 
   def index
     @recipes = Recipe.approved
@@ -82,10 +83,21 @@ class RecipesController < ApplicationController
     redirect_to @pending_recipe
   end
 
+  def reprove
+    @pending_recipe = Recipe.find(params[:id])
+    @pending_recipe.reproved!
+
+    redirect_to @pending_recipe
+  end
+
   private
 
+  def admin?
+    redirect_to root_path unless current_user.admin?
+  end
+
   def set_recipe
-    @recipe= Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id])
     @recipe_types = RecipeType.all
   end
 

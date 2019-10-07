@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_04_182139) do
+ActiveRecord::Schema.define(version: 2019_10_07_180116) do
 
   create_table "recipe_list_items", force: :cascade do |t|
     t.integer "recipe_list_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_10_04_182139) do
     t.string "user"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_type", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
