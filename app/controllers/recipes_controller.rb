@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   before_action :own_recipe?, only: [:edit, :update]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.approved
   end
 
   def show
@@ -69,6 +69,17 @@ class RecipesController < ApplicationController
       @recipe_list_item = RecipeListItem.create!(recipe: @recipe, recipe_list: @recipe_list)
       redirect_to @recipe_list
     end
+  end
+
+  def approve_list
+    @pending_recipes = Recipe.pending
+  end
+
+  def approve
+    @pending_recipe = Recipe.find(params[:id])
+    @pending_recipe.approved!
+
+    redirect_to @pending_recipe
   end
 
   private

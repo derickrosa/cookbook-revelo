@@ -8,7 +8,7 @@ feature 'User update recipe' do
     Recipe.create!(title: 'Bolodecenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: 'Brasileira',
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura', user: user,
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes', status: :approved)
 
     # simula a ação do usuário
     visit root_path
@@ -39,7 +39,7 @@ feature 'User update recipe' do
     Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: 'Brasileira',
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura', user: user,
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes', status: :approved)
 
     # simula a ação do usuário
     login_as(user, :scope => :user)
@@ -67,17 +67,17 @@ feature 'User update recipe' do
                   recipe_type: recipe_type, cuisine: 'Brasileira',
                   cook_time: 50,
                   ingredients: 'Farinha, açucar, cenoura', user: user,
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes', status: :approved)
     Recipe.create(title: 'Bolo de chocolate', difficulty: 'Fácil',
                   recipe_type: recipe_type, cuisine: 'Árabe',
                   cook_time: 60,
                   ingredients: 'Farinha, açucar, cenoura', user: user,
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes', status: :approved)
     Recipe.create(title: 'Pudim', difficulty: 'Fácil',
                   recipe_type: recipe_type, cuisine: 'Alemã',
                   cook_time: 60,
                   ingredients: 'Farinha, açucar, cenoura', user: other_user,
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes', status: :approved)
 
     login_as(user, :scope => :user)
     visit root_path
@@ -96,12 +96,12 @@ feature 'User update recipe' do
                   recipe_type: recipe_type, cuisine: 'Brasileira',
                   cook_time: 50,
                   ingredients: 'Farinha, açucar, cenoura', user: user,
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes', status: :approved)
     Recipe.create(title: 'Bolo de chocolate', difficulty: 'Fácil',
                   recipe_type: recipe_type, cuisine: 'Árabe',
                   cook_time: 60,
                   ingredients: 'Farinha, açucar, cenoura', user: user,
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes', status: :approved)
 
     visit root_path
 

@@ -1,6 +1,10 @@
 <h1><%=@recipe.title %></h1>
+<% if @recipe.pending? %>
+  <%= link_to 'Aprovar', approve_recipe_path %>
+<% end %>
 <h3>Detalhes</h3>
 <p>Receita enviada por <%= @recipe.user.email %></p>
+<p><%= @recipe.status %></p>
 <p><%=@recipe.recipe_type.name %></p>
 <p><%=@recipe.cuisine %></p>
 <p><%=@recipe.difficulty %></p>

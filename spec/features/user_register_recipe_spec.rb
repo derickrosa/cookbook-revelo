@@ -37,6 +37,8 @@ feature 'User register recipe' do
     expect(page).to have_css('p', text: 'Trigo para quibe, cebola, tomate picado, azeite, salsinha')
     expect(page).to have_css('h3', text: 'Como Preparar')
     expect(page).to have_css('p', text:  'Misturar tudo e servir. Adicione limão a gosto.')
+
+    expect(page).to have_css('p', text: 'pending')
   end
 
   scenario 'and must fill in all fields' do

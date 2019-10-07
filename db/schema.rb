@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_194439) do
+ActiveRecord::Schema.define(version: 2019_10_04_182139) do
 
   create_table "recipe_list_items", force: :cascade do |t|
     t.integer "recipe_list_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_10_03_194439) do
     t.text "ingredients"
     t.integer "recipe_type_id"
     t.integer "user_id"
+    t.integer "status", default: 0
     t.index ["recipe_type_id"], name: "index_recipes_on_recipe_type_id"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end

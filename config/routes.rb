@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :show, :new, :create, :edit, :update] do
     get 'search', on: :collection
     post 'add_to_list', on: :member
+    get 'pending', on: :collection
+    get 'approve_list', on: :collection
+    get 'approve', on: :member
   end
   resources :recipe_types, only: %i[new create show index]
   # get '/search', to: 'recipes#search'
