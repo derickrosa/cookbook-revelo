@@ -14,3 +14,25 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery.min
+//= require jquery_ujs
+//= require popper
+//= require material/bootstrap-material-design.min
+//= require material/perfect-scrollbar.jquery.min
+//= require material/chartist.min
+//= require material/arrive.min
+//= require material/bootstrap-notify
+//= require material/material-dashboard
+//= require material/demo
+//= require material/arrive.min
+//= require material/bootstrap-datetimepicker.min
+//= require material/bootstrap-notify
+//= require material/bootstrap-selectpicker
+//= require material/bootstrap-tagsinput
+//= require material/chartist.min
+//= require material/fullcalendar.min
+//= require material/jquery.bootstrap-wizard
+//= require material/jquery-jvectormap
+
+
+

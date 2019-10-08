@@ -90,6 +90,10 @@ class RecipesController < ApplicationController
     redirect_to @pending_recipe
   end
 
+  def dashboard
+    @welcome_message = "Welcome!"
+  end
+
   private
 
   def admin?

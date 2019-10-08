@@ -12,6 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
+ *= require material/material-dashboard
+ *= require material/material-dashboard.css
+ *= require material/demo
+ *= require material/material-dashboard.min
+ *= require material/material-dashboard-rtl
  */
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+

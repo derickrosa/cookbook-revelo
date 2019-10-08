@@ -11,9 +11,13 @@ gem 'sqlite3'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-#Use Bootstrap for styling
+# Use Bootstrap and font-awesome for styling
 gem 'bootstrap-sass'
-#Use Devise for authentication
+gem 'font-awesome-rails'
+# Javascript for styling
+gem 'jquery-rails'
+gem 'popper_js', '~> 1.12.9'
+# Use Devise for authentication
 gem 'devise'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

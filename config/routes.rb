@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       post 'reprove'
     end
   end
+  get '/dashboard', to: 'recipes#dashboard'
 
   namespace 'api' do
     namespace 'v1' do
