@@ -6,4 +6,9 @@ class Api::V1::RecipesController < ActionController::API
     # return render json: Recipe.all unless  params[:status]
     # render json: Recipe.method(params[:status].to_sym)
   end
+
+  def show
+    render json: Recipe.find(params[:id]), status: :ok
+  end
+  
 end
