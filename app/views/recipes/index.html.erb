@@ -10,9 +10,9 @@
 <%=link_to "Enviar tipo da receita", new_recipe_type_path %>
 <%=link_to "Ver tipos de receitas", recipe_types_path %>
 <% if user_signed_in? %>
-<%= link_to "Minhas Receitas", '/my_recipes' %>
-<%= link_to "Minhas Listas", 'recipe_lists/my_recipe_lists' %>
-<%= link_to 'Criar lista', new_recipe_list_path %>
+<%= link_to "Minhas Receitas", my_recipes_recipes_path %>
+<%= link_to "Minhas Listas",  my_lists_lists_path%>
+<%= link_to 'Criar lista', new_list_path %>
 <%= link_to "Receitas Pendentes", approve_list_recipes_path if current_user.admin? %>
 <% end %>
 <% unless user_signed_in?%>

@@ -1,18 +1,31 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'recipes#index'
+
   resources :recipes, only: [:index, :show, :new, :create, :edit, :update] do
-    get 'search', on: :collection
-    post 'add_to_list', on: :member
-    get 'pending', on: :collection
-    get 'approve_list', on: :collection
-    post 'approve', on: :member
-    post 'reprove', on: :member
+    collection do
+      get 'search'
+      get 'pending'
+      get 'approve_list'
+      # get 'lists/my_lists', to: 'recipe_lists#my_recipe_lists'
+      get '/my_recipes', to: 'recipes#my_recipes'
+      # resources :recipe_lists, only: [:new, :create, :show, :edit, :update]
+      resources 'lists', controller: :recipe_lists, only: %i[new create show edit update] do
+        get 'my_lists', on: :collection
+      end
+
+      # resolve('Lists') { [:recipe_lists] }
+    end
+
+    member do
+      post 'add_to_list'
+      post 'approve'
+      post 'reprove'
+    end
   end
-  resources :recipe_types, only: %i[new create show index]
-  # get '/search', to: 'recipes#search'
+
   get '/my_recipes', to: 'recipes#my_recipes'
   get 'recipe_lists/my_recipe_lists', to: 'recipe_lists#my_recipe_lists'
-
-  resources :recipe_lists, only: [:new, :create, :show, :edit, :update]
+  
+  resources :recipe_types, only: %i[new create show index]
 end

@@ -68,7 +68,7 @@ class RecipesController < ApplicationController
       redirect_to @recipe
     else
       @recipe_list_item = RecipeListItem.create!(recipe: @recipe, recipe_list: @recipe_list)
-      redirect_to @recipe_list
+      redirect_to list_path(@recipe_list)
     end
   end
 

@@ -7,13 +7,13 @@ class RecipeListsController < ApplicationController
     @recipe_list = current_user.recipe_lists.new(params.require(:recipe_list).permit(:name))
 
     if @recipe_list.save()
-      redirect_to @recipe_list
+      redirect_to list_path(@recipe_list)
     else
       render :new
     end
   end
 
-  def my_recipe_lists
+  def my_lists
     @recipe_lists = RecipeList.where(user: current_user)
   end
 
