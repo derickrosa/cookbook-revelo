@@ -24,6 +24,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace 'api' do
+    namespace 'v1' do
+      resources :recipes, only: %i[index]
+    end
+  end
+
   get '/my_recipes', to: 'recipes#my_recipes'
   get 'recipe_lists/my_recipe_lists', to: 'recipe_lists#my_recipe_lists'
   
