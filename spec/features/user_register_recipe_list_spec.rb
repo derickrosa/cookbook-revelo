@@ -41,7 +41,7 @@ feature 'user register new list' do
     fill_in 'Nome', with: 'Receitas de Natal'
     click_on 'Enviar'
 
-    expect(current_path).to eq recipe_lists_path
+    expect(current_path).to eq lists_path
     expect(page).to have_content('Lista já existe!') 
   end
 end
