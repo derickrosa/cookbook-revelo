@@ -23,6 +23,7 @@
 //= require material/arrive.min
 //= require material/bootstrap-notify
 //= require material/material-dashboard
+//= require material/material-dashboard.js
 //= require material/demo
 //= require material/arrive.min
 //= require material/bootstrap-datetimepicker.min
@@ -33,6 +34,19 @@
 //= require material/fullcalendar.min
 //= require material/jquery.bootstrap-wizard
 //= require material/jquery-jvectormap
+//= require material/gulpfile
+//= require material/jasny-bootstrap.min
+//= require material/jquery.dataTables.min
+//= require material/jquery.min
+//= require material/jquery.tagsinput
+//= require material/jquery.validate.min
+//= require material/material-dashboard.min
+//= require material/moment.min
+//= require material/nouislider.min
+//= require material/perfect-scrollbar.jquery.min
+//= require material/popper.min
+//= require material/sweetalert2
+
 
 
 

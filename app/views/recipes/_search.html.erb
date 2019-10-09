@@ -1,5 +1,8 @@
-<%= form_with(url: search_recipes_path, method: 'get') do %>
-  <%= label_tag(:q, 'Busca')%>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag 'Buscar' %>
+<%= form_with(url: search_recipes_path, method: 'get', class:"navbar-form") do %>
+  <div class="input-group no-border">
+    <%= text_field_tag(:q,nil, placeholder: 'Busca', class: 'form-control', style: 'width: 80%') %>    
+    <%= button_tag(type: "submit", class: "btn btn-white btn-round btn-just-icon") do %>
+      <i class="material-icons">search</i>
+    <% end %>
+  </div>
 <% end %>
