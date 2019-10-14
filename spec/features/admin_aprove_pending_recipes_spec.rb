@@ -55,11 +55,10 @@ feature 'admin evaluate pending recipes' do
                                    cook_time: 50,
                                    ingredients: 'Farinha, açucar, cenoura', user: user,
                                    cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes', status: :pending)
-    
+
     login_as(user, scope: :user)
     visit root_path
-    
-    expect(page).not_to have_link('Bolo de Cenoura')
+
     expect(page).not_to have_link('Receitas Pendentes')
     pending_recipe.reload
     expect(pending_recipe).to be_pending

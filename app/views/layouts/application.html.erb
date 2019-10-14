@@ -6,7 +6,9 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons' %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>    
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -15,60 +17,78 @@
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
 
       <div class="logo">
-        <a href="#" class="simple-text logo-normal">
+        <%= link_to root_path, :class => 'simple-text logo-normal' do %>
           Cookbook
-        </a>
+        <% end %>
+        <% body = ''%>
+        <% if user_signed_in?%>         
+           <%= link_to destroy_user_session_path, method: :delete, :class => 'nav-link' do %>            
+            <i class="material-icons">person</i>   
+            <p>space</p> Sair       
+          <% end %>
+
+        <% else %>
+          <%= link_to new_user_session_path, :class => 'nav-link' do %>            
+            <i class="material-icons">person</i>   
+            <p>space</p> Entrar       
+          <% end %>
+        <% end %>
+
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html">
+          <li class="nav-item active  ">            
+            <%= link_to root_path, :class => 'nav-link' do %>
               <i class="material-icons">dashboard</i>
               <p>Página Inicial</p>
-            </a>
+            <% end %>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
+          <li class="nav-item ">            
+            <%= link_to new_recipe_path, :class => 'nav-link' do %>
               <i class="material-icons">person</i>
               <p>Enviar uma receita</p>
-            </a>
+            <% end %>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+          <li class="nav-item ">            
+            <%= link_to new_recipe_type_path, class: 'nav-link' do %>
               <i class="material-icons">content_paste</i>
               <p>Enviar tipo da receita</p>
-            </a>
+            <% end %>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <%= link_to recipe_types_path, class: 'nav-link' do %>
               <i class="material-icons">library_books</i>
               <p>Ver tipos de receitas</p>
-            </a>
+            <% end %>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Minhas Receitas</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
-              <i class="material-icons">location_ons</i>
-              <p>Minhas Listas</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Criar lista</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./rtl.html">
-              <i class="material-icons">language</i>
-              <p>Receitas Pendentes</p>
-            </a>
-          </li>          
+          <% if user_signed_in? %>
+            <li class="nav-item ">
+              <%= link_to my_recipes_path, class: 'nav-link' do %>
+                <i class="material-icons">bubble_chart</i>
+                <p>Minhas Receitas</p>
+              <% end %>
+            </li>
+            <li class="nav-item ">
+              <%= link_to my_lists_lists_path, class: 'nav-link' do %>
+                <i class="material-icons">location_ons</i>
+                <p>Minhas Listas</p>
+              <% end %>
+            </li>
+            <li class="nav-item ">
+              <%= link_to new_list_path, class: 'nav-link' do %>
+                <i class="material-icons">notifications</i>
+                <p>Criar lista</p>
+              <% end %>
+            </li>
+            <% if current_user.admin? %>
+              <li class="nav-item ">
+                <%= link_to approve_list_recipes_path, class: 'nav-link' do %>
+                  <i class="material-icons">language</i>
+                  <p>Receitas Pendentes</p>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -83,14 +103,6 @@
       <div class="content">
         <div class="container-fluid">
           <%= notice %>
-          <nav>
-            <% if user_signed_in? %>
-                <ul>
-                  <li>Signed in successfully.</li>
-                  <li><%= link_to "Logout", destroy_user_session_path, method: 'delete' %></li>
-                </ul>
-            <% end %>
-          </nav>          
           <%= yield %>
         </div>
       </div>
@@ -117,10 +129,8 @@
           </nav>
           <div class="copyright float-right">
             &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by
-            <a href="#" target="_blank">Revelo</a>.
+            <%= Time.now.year %>, criado no bootcamp da </i>
+            <a href="https://www.revelo.com.br/" target="_blank">Revelo</a>.
           </div>
         </div>
       </footer>

@@ -1,20 +1,31 @@
-<h1>CookBook</h1>
-
-<p>Bem-vindo ao maior livro de receitas online</p>
-
-<%= render @recipes %>
 
 
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron">
+				<h2>
+					Bem-vindo ao Cook Book!
+				</h2>
+				<p>
+					 O maior livro de receitas offline!
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" href="#">Saiba mais</a>
+				</p>
+			</div>
+	
+		</div>
+	</div>
+</div>
 
-<%=link_to "Enviar uma receita", new_recipe_path if user_signed_in?%>
-<%=link_to "Enviar tipo da receita", new_recipe_type_path %>
-<%=link_to "Ver tipos de receitas", recipe_types_path %>
-<% if user_signed_in? %>
-<%= link_to "Minhas Receitas", my_recipes_path %>
-<%= link_to "Minhas Listas",  my_lists_lists_path%>
-<%= link_to 'Criar lista', new_list_path %>
-<%= link_to "Receitas Pendentes", approve_list_recipes_path if current_user.admin? %>
-<% end %>
-<% unless user_signed_in?%>
-  <%= link_to "Entrar", new_user_session_path %>
-<% end %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<%= render @recipes %>				
+			</div>
+		</div>
+	</div>
+</div>
+

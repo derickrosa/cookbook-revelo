@@ -18,7 +18,7 @@ feature 'Visitor searchs for a recipe' do
     visit root_path
 
     fill_in 'Busca', with: 'Bolo de cenoura'
-    click_on 'Buscar'
+    submit_form
 
     expect(page).to have_content('Resultados da Busca')
     expect(page).to have_content('1 resultado encontrado para: Bolo de cenoura')
@@ -42,7 +42,7 @@ feature 'Visitor searchs for a recipe' do
     visit root_path
 
     fill_in 'Busca', with: 'Torta de maçã'
-    click_on 'Buscar'
+    submit_form
 
     expect(page).to have_content('Resultados da Busca')
     expect(page).to have_content('Não foram encontrados resultados para: Torta de maçã')
@@ -67,7 +67,7 @@ feature 'Visitor searchs for a recipe' do
     visit root_path
 
     fill_in 'Busca', with: 'Bolo'
-    click_on 'Buscar'
+    submit_form
 
     expect(page).to have_content('Resultados da Busca')
     expect(page).to have_content('2 resultados encontrados para: Bolo')

@@ -5,8 +5,8 @@ feature 'User registration' do
     visit root_path
 
     expect(page).to have_link('Entrar')
-    expect(page).not_to have_link('Logout')
-    expect(page).not_to have_link('Enviar uma receita')
+    expect(page).not_to have_link('Sair')
+    expect(page).not_to have_link('Enviar Uma Receita')
   end
 
   scenario 'successfully' do
@@ -19,9 +19,8 @@ feature 'User registration' do
     fill_in 'Password confirmation', with: 'teste123'
     click_on 'Sign up'
 
-    expect(page).to have_content('Signed in successfully.')
-    expect(page).to have_link('Logout')
-    expect(page).not_to have_link('Login')
+    expect(page).to have_link('Sair')
+    expect(page).not_to have_link('Entrar')
   end
 
   scenario 'and sign in' do
@@ -34,9 +33,8 @@ feature 'User registration' do
     fill_in 'Password', with: 'teste123'
     click_on 'Log in'
 
-    expect(page).to have_content('Signed in successfully.')
-    expect(page).to have_link('Logout')
-    expect(page).not_to have_link('Login')
+    expect(page).not_to have_link('Entrar')
+    expect(page).to have_link('Sair')
   end
 
   scenario 'and sign out' do
@@ -48,10 +46,10 @@ feature 'User registration' do
     fill_in 'Email', with: 'teste@teste.com'
     fill_in 'Password', with: 'teste123'
     click_on 'Log in'
-    click_on 'Logout'
+    click_on 'Sair'
 
     expect(page).to have_link('Entrar')
-    expect(page).not_to have_link('Logout')
+    expect(page).not_to have_link('Sair')
 
   end
 end
